@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="qbl_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="qbl_tb" />
+            <top_module name="utilitypkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="835833333fs"></ZoomStartTime>
+      <ZoomEndTime time="1537833334fs"></ZoomEndTime>
+      <Cursor1Time time="1000000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="164"></NameColumnWidth>
+      <ValueColumnWidth column_width="84"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="/qbl_tb/sstRst_s" type="logic">
+      <obj_property name="ElementShortName">sstRst_s</obj_property>
+      <obj_property name="ObjectShortName">sstRst_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/ssX5rst_s" type="logic">
+      <obj_property name="ElementShortName">ssX5rst_s</obj_property>
+      <obj_property name="ObjectShortName">ssX5rst_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/clk_i" type="logic">
+      <obj_property name="ElementShortName">clk_i</obj_property>
+      <obj_property name="ObjectShortName">clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/clk_X5_i" type="logic">
+      <obj_property name="ElementShortName">clk_X5_i</obj_property>
+      <obj_property name="ObjectShortName">clk_X5_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/clk_X10_i" type="logic">
+      <obj_property name="ElementShortName">clk_X10_i</obj_property>
+      <obj_property name="ObjectShortName">clk_X10_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/clkLink" type="logic">
+      <obj_property name="ElementShortName">clkLink</obj_property>
+      <obj_property name="ObjectShortName">clkLink</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/Eval_clk_o_s" type="logic">
+      <obj_property name="ElementShortName">Eval_clk_o_s</obj_property>
+      <obj_property name="ObjectShortName">Eval_clk_o_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/GulfEvalLink" type="logic">
+      <obj_property name="ElementShortName">GulfEvalLink</obj_property>
+      <obj_property name="ObjectShortName">GulfEvalLink</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/eval_unit/rxData10b_intl" type="array">
+      <obj_property name="ElementShortName">rxData10b_intl[9:0]</obj_property>
+      <obj_property name="ObjectShortName">rxData10b_intl[9:0]</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0xACF21512ACF21512" bd:device="xc7z020clg400-1" bd:isValidated="true" bd:synthFlowMode="Hierarchical" bd:tool_version="2018.2" bd:top="design_1" bd:version="1.00.a">
+
+  <spirit:component xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
+    <spirit:vendor>xilinx.com</spirit:vendor>
+    <spirit:library>BlockDiagram</spirit:library>
+    <spirit:name>design_1</spirit:name>
+    <spirit:version>1.00.a</spirit:version>
+    <spirit:parameters>
+      <spirit:parameter>
+        <spirit:name>isTop</spirit:name>
+        <spirit:value spirit:format="bool" spirit:resolve="immediate">true</spirit:value>
+      </spirit:parameter>
+    </spirit:parameters>
+    <spirit:model>
+      <spirit:views>
+        <spirit:view>
+          <spirit:name>BlockDiagram</spirit:name>
+          <spirit:envIdentifier>:vivado.xilinx.com:</spirit:envIdentifier>
+          <spirit:hierarchyRef spirit:library="BlockDiagram" spirit:name="design_1_imp" spirit:vendor="xilinx.com" spirit:version="1.00.a"/>
+        </spirit:view>
+      </spirit:views>
+      <spirit:ports>
+        <spirit:port>
+          <spirit:name>sstClk</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>sstRst</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>sstX5Clk</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>ssX5rst</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>txData8b</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+            <spirit:vector>
+              <spirit:left>7</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>txData8bValid</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>dataOut</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+      </spirit:ports>
+    </spirit:model>
+  </spirit:component>
+
+  <spirit:design xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
+    <spirit:vendor>xilinx.com</spirit:vendor>
+    <spirit:library>BlockDiagram</spirit:library>
+    <spirit:name>design_1_imp</spirit:name>
+    <spirit:version>1.00.a</spirit:version>
+    <spirit:componentInstances>
+      <spirit:componentInstance>
+        <spirit:instanceName>ByteLinkGulfv2_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="user" spirit:name="ByteLinkGulfv2" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_ByteLinkGulfv2_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+    </spirit:componentInstances>
+    <spirit:adHocConnections>
+      <spirit:adHocConnection>
+        <spirit:name>txData8bValid_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="txData8bValid"/>
+        <spirit:internalPortReference spirit:componentRef="ByteLinkGulfv2_0" spirit:portRef="txData8bValid"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>txData8b_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="txData8b"/>
+        <spirit:internalPortReference spirit:componentRef="ByteLinkGulfv2_0" spirit:portRef="txData8b"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>ssX5rst_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="ssX5rst"/>
+        <spirit:internalPortReference spirit:componentRef="ByteLinkGulfv2_0" spirit:portRef="ssX5rst"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>sstX5Clk_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="sstX5Clk"/>
+        <spirit:internalPortReference spirit:componentRef="ByteLinkGulfv2_0" spirit:portRef="sstX5Clk"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>sstRst_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="sstRst"/>
+        <spirit:internalPortReference spirit:componentRef="ByteLinkGulfv2_0" spirit:portRef="sstRst"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>sstClk_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="sstClk"/>
+        <spirit:internalPortReference spirit:componentRef="ByteLinkGulfv2_0" spirit:portRef="sstClk"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>ByteLinkGulfv2_0_dataOut</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="ByteLinkGulfv2_0" spirit:portRef="dataOut"/>
+        <spirit:externalPortReference spirit:portRef="dataOut"/>
+      </spirit:adHocConnection>
+    </spirit:adHocConnections>
+  </spirit:design>
+
+</bd:repository>

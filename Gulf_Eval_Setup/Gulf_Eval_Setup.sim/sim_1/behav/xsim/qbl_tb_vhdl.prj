@@ -1,0 +1,13 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Gulf_Eval_Setup.srcs/sources_1/imports/rtl/UtilityPkg.vhd" \
+"../../../../Gulf_Eval_Setup.srcs/sources_1/imports/rtl/Encode8b10b.vhd" \
+"../../../../Gulf_Eval_Setup.srcs/sources_1/imports/rtl/Decode8b10b.vhd" \
+"../../../../Gulf_Eval_Setup.srcs/sources_1/imports/rtl/ByteLinkEval.vhd" \
+"../../../../Gulf_Eval_Setup.srcs/sources_1/imports/rtl/TopEval.vhd" \
+"../../../../Gulf_Eval_Setup.srcs/sources_1/imports/rtl/TopGulf.vhd" \
+"../../../../Gulf_Eval_Setup.srcs/sources_1/imports/rtl/bitslipstatemachine.vhd" \
+"../../../../Gulf_Eval_Setup.srcs/sources_1/imports/design/qbl_tb.vhd" \
+
+# Do not sort compile order
+nosort
