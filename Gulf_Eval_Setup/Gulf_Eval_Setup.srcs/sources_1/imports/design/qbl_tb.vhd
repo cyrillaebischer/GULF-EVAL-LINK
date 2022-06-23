@@ -74,7 +74,7 @@ constant clk_i_period : time := 10 ns;  -- 1/127 = 7.8740157
 constant comma_char_s : std_logic_vector(9 downto 0) := "0010111100";
 signal sstRst_s,ssX5rst_s, dataIn_s, dataOut_s, rxData8bValid_s,txData8bValid : std_logic;
 signal rxData8b_eval, txData8b : std_logic_vector(7 downto 0);
-signal clk_i, clk_div_i, clk_X10_i, rstX5_i, sstClkB, clkLink, Eval_clk_o_s, clk_doubl_X1_i, clk_doubl_X5_i: std_logic;
+signal clk_i, clk_div_i, clk_X2_i, rstX5_i, sstClkB, clkLink, Eval_clk_o_s, clk_doubl_X1_i, clk_doubl_X5_i: std_logic;
 signal GulfEvalLink, txData10bValid_Gulf, rxData8bvalid_Eval: std_logic;
 
 signal txData10b_Gulf : std_logic_vector(9 downto 0) := (others => '0');
@@ -136,14 +136,14 @@ eval_unit: TopEval port map (
 --end process; 
 
 ---- read from file process ----
-rd_values: process(clk_i)
+rd_values: process(clk_X2_i)
     file fp : text is in "C:\Users\Cyrill\Documents\S6\BA-GULFstream\Gulf_Eval_Setup\Gulf_Eval_Setup\KcharPlus8chanOutput.dat";
     variable ln     : line;
     variable x : std_logic;
     variable stop : boolean := false;
     begin
        
-        if (rising_edge(clk_i) or falling_edge(clk_i))then
+        if (rising_Edge(clk_X2_i))then
             if stop = false then
                     readline(fp,ln);
                     read(ln,x);
@@ -152,6 +152,8 @@ rd_values: process(clk_i)
                         stop := true;    
                     end if;
             end if;
+        else
+            xb <= xb;
         end if;
 end process;
     
@@ -172,12 +174,12 @@ begin
     wait for clk_i_period/(0.2);
 end process;
 
-clkX10: process
+clkX2: process
 begin 
-    clk_X10_i <= '0';
-    wait for clk_i_period/20;
-    clk_X10_i <= '1';
-    wait for clk_i_period/20;
+    clk_X2_i <= '0';
+    wait for clk_i_period/4;
+    clk_X2_i <= '1';
+    wait for clk_i_period/4;
 end process;
 
 -- reset process
