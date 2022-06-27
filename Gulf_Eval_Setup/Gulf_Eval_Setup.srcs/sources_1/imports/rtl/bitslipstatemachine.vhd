@@ -17,6 +17,7 @@ entity bitslip_fsm is
 		rst_i : in std_logic;
 		
 		aligned_i : in std_logic;
+		align_wip_i   : in std_logic;
 		
 		bitslip_o  : out std_logic
 	);
@@ -43,7 +44,7 @@ begin
             else
                 case state_s is
                     when IDLE =>
-                        if aligned_i = '0' then
+                        if aligned_i = '0' and align_wip_i = '0' then
                             state_s <= BITSLIP;
                         end if;
                         

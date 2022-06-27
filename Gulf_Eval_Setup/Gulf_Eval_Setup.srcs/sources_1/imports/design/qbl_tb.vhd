@@ -70,7 +70,7 @@ component TopGulf is
            );              
 end component;
 
-constant clk_i_period : time := 10 ns;  -- 1/127 = 7.8740157
+constant clk_i_period : time := 0.78 ns;  -- 1/127 = 7.8740157
 constant comma_char_s : std_logic_vector(9 downto 0) := "0010111100";
 signal sstRst_s,ssX5rst_s, dataIn_s, dataOut_s, rxData8bValid_s,txData8bValid : std_logic;
 signal rxData8b_eval, txData8b : std_logic_vector(7 downto 0);
@@ -118,39 +118,28 @@ eval_unit: TopEval port map (
 --wait for 45 us;
 --txData10b_Gulf <= "00" & x"AB";
 --txData10bValid_Gulf <= '1';
-
---wait for 10*clk_i_period;
---txData10b_Gulf <= "00" & x"CD";
---txData10bValid_Gulf <= '1';
-
---wait for 10*clk_i_period;
---txData10b_Gulf <= "00" & x"EF";
---txData10bValid_Gulf <= '1';
-
---wait for 10*clk_i_period;
---txData10b_Gulf <= "00" & x"00";
---txData10bValid_Gulf <= '1';
-
---wait for 4 us;
---GULF_Din_Valid <= '0';
 --end process; 
 
 ---- read from file process ----
+-- variable training_stop : boolean := false;
+-- file fp_comma : text is in "C:\Users\Cyrill\Documents\S6\BA-GULFstream\Gulf_Eval_Setup\Gulf_Eval_Setup\Kchar_Stream.dat";
+
 rd_values: process(clk_X2_i)
-    file fp : text is in "C:\Users\Cyrill\Documents\S6\BA-GULFstream\Gulf_Eval_Setup\Gulf_Eval_Setup\KcharPlus8chanOutput.dat";
+    
+    file fp_output : text is in "C:\Users\Cyrill\Documents\S6\BA-GULFstream\Gulf_Eval_Setup\Gulf_Eval_Setup\8chan_output.dat";
     variable ln     : line;
     variable x : std_logic;
-    variable stop : boolean := false;
-    begin
-       
+    
+    variable stop          : boolean := false;
+    begin   
         if (rising_Edge(clk_X2_i))then
             if stop = false then
-                    readline(fp,ln);
-                    read(ln,x);
-                    xb <= x;
-                    if endfile(fp) = true then
-                        stop := true;    
-                    end if;
+                        readline(fp_output,ln);
+                        read(ln,x);
+                        xb <= x;
+                        if endfile(fp_output) = true then
+                            stop := true;    
+                        end if;
             end if;
         else
             xb <= xb;
@@ -169,9 +158,9 @@ end process;
 clkDiv: process
 begin 
     clk_div_i <= '0';
-    wait for clk_i_period/(0.2);
+    wait for (clk_i_period*10)/2;
     clk_div_i <= '1';
-    wait for clk_i_period/(0.2);
+    wait for (clk_i_period*10)/2;
 end process;
 
 clkX2: process

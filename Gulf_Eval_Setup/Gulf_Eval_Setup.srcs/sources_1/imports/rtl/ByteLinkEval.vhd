@@ -28,6 +28,7 @@ entity ByteLinkEval is
       rxData10b     : in  slv(9 downto 0);
       -- Align signal
       aligned       : out sl;
+      align_wip_o      : out sl;
       -- Outgoing true data
       rxData8b      : out  slv(7 downto 0);
       rxData8bValid : out  sl
@@ -68,10 +69,10 @@ architecture rtl of ByteLinkEval is
    signal rxDisp     : sl;
    signal rxCodeErr  : sl;
    signal rxDispErr  : sl;
+   signal align_wip_s : sl;
    
    signal txData10   : slv(9 downto 0);
    signal txDisp     : sl;
-
 
    signal inputTxData8b      : slv(7 downto 0);
    signal inputTxData8bValid : sl;
@@ -79,6 +80,8 @@ architecture rtl of ByteLinkEval is
    
    signal r   : RegType := REG_INIT_C;
    signal rin : RegType;
+   
+   
 
    -- ISE attributes to keep signals for debugging
    -- attribute keep : string;
@@ -134,7 +137,6 @@ begin
          dispErr  => rxDispErr
       );
 
-
    -- Master state machine (combinatorial)
    comb : process(rst,r,
                   rxDataByte,rxCodeErr,rxDispErr,rxDataK,
@@ -161,20 +163,25 @@ begin
             v.txData8b := K_COM_ALIGN_C;
             v.txDataK  := K_CHAR;
             if rxDataK = '0' or (rxDataByte /= K_COM_ALIGN_C and rxDataByte /= K_COM_ZERO_C) or
-               rxCodeErr = '1' or rxDispErr = '1' then
+               rxCodeErr = '1' or rxDispErr = '1' 
+               then
+               align_wip_o <= '0';
                v.alignCnt := (others => '0');
             else
+               align_wip_o <= '1';
                v.alignCnt := r.alignCnt + 1;
             end if;
             if r.alignCnt = ALIGN_CYCLES_G then
                v.alignCnt := (others => '0');
+               align_wip_o <= '0';
                v.state    := LOCKED_S;
             end if;
          when LOCKED_S =>
             v.aligned := '1';
             -- Start over if we see an undefined K_CHAR or code/disparity errors
-            if (rxDataK = '1' and (rxDataByte /= K_COM_ALIGN_C and rxDataByte /= K_COM_ZERO_C)) or
-               rxCodeErr = '1' or rxDispErr = '1' then
+            if (rxDataK = '1' and (rxDataByte /= K_COM_ALIGN_C and rxDataByte /= K_COM_ZERO_C))
+            --or rxCodeErr = '1' or rxDispErr = '1' 
+               then
                v.state := RESET_S;
             end if;
             -- Otherwise, send data if we have it, or K_ZERO_C otherwise
@@ -204,6 +211,15 @@ begin
       aligned       <= r.aligned;
 
    end process;
+   
+--   align_wip: process(r.alignCnt) is
+--    begin
+--        case r.alignCnt is
+--            when "0"  => align_wip_o <= '0';
+--            when others => align_wip_o <= '1';
+--        end case;
+--    end process;
+        
 
    -- Master state machine (sequential)
    seq : process (clk) is

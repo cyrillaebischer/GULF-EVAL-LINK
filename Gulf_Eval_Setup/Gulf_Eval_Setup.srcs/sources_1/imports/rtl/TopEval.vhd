@@ -22,7 +22,8 @@
 library IEEE;
 
 use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all;
+--use ieee.std_logic_arith.all;
+use IEEE.NUMERIC_STD.ALL;
 use ieee.std_logic_unsigned.all;
 use work.UtilityPkg.all;
 Library UNISIM;
@@ -50,6 +51,7 @@ architecture rtl of TopEval is
             rst_i : in std_logic;
             
             aligned_i : in std_logic;
+            align_wip_i   : in std_logic;
             
             bitslip_o  : out std_logic
         );
@@ -60,20 +62,46 @@ signal txData10b_intl : slv(9 downto 0);
 
 signal shiftI1_s, shiftI2_s : sl;
 
-signal aligned_intl, bitslip_s: sl; 
+signal aligned_intl, bitslip_s, align_wip_s: sl; 
+signal count_ones, count_zeros : std_logic_vector(4 downto 0);
+signal RD_s                    : std_logic_vector(4 downto 0);
 
 begin
+
+   -- RD calculator
+   process(rxData10b_intl)
+       variable count : unsigned(4 downto 0) := "00000";
+       variable zeros : unsigned(4 downto 0) := "00000";
+       variable RD    : signed(4 downto 0)   := "00000";
+       begin
+        if sstRst = '1' then
+            count := "00000";
+            zeros := "00000";
+            RD_s  <= "00000";
+        else
+           count := "00000";   --initialize count variable.
+           for i in 0 to 9 loop   --for all the bits.
+               count := count + ("0000" & rxData10b_intl(i));   --Add the bit to the count.
+           end loop;
+           count_ones <= std_logic_vector(count);    --assign the count to output.
+           zeros := 10 - count;
+           count_zeros <= std_logic_vector(zeros);
+           RD_s <= std_logic_vector(count) - std_logic_vector(zeros);
+       end if;
+   end process;
+   
 Bitslipstatemachine: bitslip_fsm
     port map (
         clk_i       => sstClkDiv,
         rst_i       => sstRSt,
         aligned_i   => aligned_intl,
+        align_wip_i     => align_wip_s,
         bitslip_o   => bitslip_s
         );
   
 U_bytelink : entity work.ByteLinkEval
 generic map (
-     ALIGN_CYCLES_G  => 1,
+     ALIGN_CYCLES_G  => 20,
       GATE_DELAY_G    => 1 ns
    )
   port map ( 
@@ -84,6 +112,7 @@ generic map (
       rxData10b  =>  rxData10b_intl,
       -- Align signal
       aligned       => aligned_intl,  
+      align_wip_o      => align_wip_s,
       -- Outgoing true data
       rxData8b      => rxData8b,
       rxData8bValid => rxData8bValid
