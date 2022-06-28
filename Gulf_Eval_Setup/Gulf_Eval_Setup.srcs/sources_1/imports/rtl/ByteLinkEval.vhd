@@ -28,7 +28,7 @@ entity ByteLinkEval is
       rxData10b     : in  slv(9 downto 0);
       -- Align signal
       aligned       : out sl;
-      align_wip_o      : out sl;
+      align_wip_o      : out sl := '0';
       -- Outgoing true data
       rxData8b      : out  slv(7 downto 0);
       rxData8bValid : out  sl
@@ -208,18 +208,11 @@ begin
       rin <= v;
 
       -- Outputs to ports
+      rxData8b      <= r.rxData8b;
       aligned       <= r.aligned;
 
    end process;
-   
---   align_wip: process(r.alignCnt) is
---    begin
---        case r.alignCnt is
---            when "0"  => align_wip_o <= '0';
---            when others => align_wip_o <= '1';
---        end case;
---    end process;
-        
+       
 
    -- Master state machine (sequential)
    seq : process (clk) is

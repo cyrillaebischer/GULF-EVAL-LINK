@@ -39,7 +39,8 @@ entity TopEval is
            ssX5rst : in STD_LOGIC;
            dataIn : in STD_LOGIC;
            rxData8b : out STD_LOGIC_VECTOR (7 downto 0);
-           rxData8bValid : out STD_LOGIC
+           rxData8bValid : out STD_LOGIC;
+           aligned_o    : out STD_LOGIC
            );
            
 end TopEval;
@@ -101,7 +102,7 @@ Bitslipstatemachine: bitslip_fsm
   
 U_bytelink : entity work.ByteLinkEval
 generic map (
-     ALIGN_CYCLES_G  => 20,
+     ALIGN_CYCLES_G  => 5,
       GATE_DELAY_G    => 1 ns
    )
   port map ( 
@@ -118,8 +119,9 @@ generic map (
       rxData8bValid => rxData8bValid
    ); 
    
-
-
+   -- copy on output to port   
+   aligned_o <= aligned_intl;
+   
 ISERDESE2_MASTER_inst : ISERDESE2
                 generic map (
                  DATA_RATE => "DDR", -- DDR, SDR

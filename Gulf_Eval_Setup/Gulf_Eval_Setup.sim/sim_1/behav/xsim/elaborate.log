@@ -4,4 +4,31 @@ Running: C:/Xilinx/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto 9725881699
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.std_logic_signed
+Compiling package ieee.std_logic_textio
+Compiling package xil_defaultlib.utilitypkg
+Compiling package unisim.vcomponents
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling package vl.vl_types
+Compiling architecture rtl of entity xil_defaultlib.TopGulf [topgulf_default]
+Compiling architecture behavioral of entity xil_defaultlib.bitslip_fsm [bitslip_fsm_default]
+Compiling architecture rtl of entity xil_defaultlib.Encode8b10b [encode8b10b_default]
+Compiling architecture rtl of entity xil_defaultlib.Decode8b10b [decode8b10b_default]
+Compiling architecture rtl of entity xil_defaultlib.ByteLinkEval [\ByteLinkEval(align_cycles_g=5)\]
+Compiling secureip modules ...
+Compiling architecture iserdese2_v of entity unisim.ISERDESE2 [\ISERDESE2(data_width=10,interfa...]
+Compiling architecture iserdese2_v of entity unisim.ISERDESE2 [\ISERDESE2(data_width=10,interfa...]
+Compiling architecture rtl of entity xil_defaultlib.TopEval [topeval_default]
+Compiling architecture behavioral of entity xil_defaultlib.qbl_tb
+Built simulation snapshot qbl_tb_behav

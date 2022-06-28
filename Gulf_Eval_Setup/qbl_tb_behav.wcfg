@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="393670000fs"></ZoomStartTime>
-      <ZoomEndTime time="475070001fs"></ZoomEndTime>
-      <Cursor1Time time="426270000fs"></Cursor1Time>
+      <ZoomStartTime time="70570000fs"></ZoomStartTime>
+      <ZoomEndTime time="828570001fs"></ZoomEndTime>
+      <Cursor1Time time="355570000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="131"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="123"></NameColumnWidth>
+      <ValueColumnWidth column_width="77"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="28" />
+   <WVObjectSize size="27" />
    <wvobject type="divider" fp_name="divider33">
       <obj_property name="label">GULF</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -52,15 +52,20 @@
       <obj_property name="ElementShortName">dataIn</obj_property>
       <obj_property name="ObjectShortName">dataIn</obj_property>
    </wvobject>
-   <wvobject fp_name="/qbl_tb/eval_unit/U_bytelink/K_COM_ALIGN_C" type="array">
-      <obj_property name="ElementShortName">K_COM_ALIGN_C[7:0]</obj_property>
-      <obj_property name="ObjectShortName">K_COM_ALIGN_C[7:0]</obj_property>
+   <wvobject fp_name="/qbl_tb/eval_unit/rxData10b_intl" type="array">
+      <obj_property name="ElementShortName">rxData10b_intl[9:0]</obj_property>
+      <obj_property name="ObjectShortName">rxData10b_intl[9:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/qbl_tb/eval_unit/U_bytelink/U_Decode8b10b/dataOut" type="array">
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">dataOut[7:0]</obj_property>
       <obj_property name="ObjectShortName">dataOut[7:0]</obj_property>
       <obj_property name="label">decode_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/eval_unit/rxData8b" type="array">
+      <obj_property name="ElementShortName">rxData8b[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rxData8b[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/qbl_tb/eval_unit/U_bytelink/r.state" type="other">
       <obj_property name="ElementShortName">.state</obj_property>
@@ -74,10 +79,6 @@
       <obj_property name="ElementShortName">rxCodeErr</obj_property>
       <obj_property name="ObjectShortName">rxCodeErr</obj_property>
    </wvobject>
-   <wvobject fp_name="/qbl_tb/eval_unit/rxData10b_intl" type="array">
-      <obj_property name="ElementShortName">rxData10b_intl[9:0]</obj_property>
-      <obj_property name="ObjectShortName">rxData10b_intl[9:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/qbl_tb/eval_unit/U_bytelink/r.alignCnt" type="array">
       <obj_property name="ElementShortName">.alignCnt[31:0]</obj_property>
       <obj_property name="ObjectShortName">.alignCnt[31:0]</obj_property>
@@ -86,10 +87,6 @@
    <wvobject fp_name="/qbl_tb/eval_unit/U_bytelink/align_wip_o" type="logic">
       <obj_property name="ElementShortName">align_wip_o</obj_property>
       <obj_property name="ObjectShortName">align_wip_o</obj_property>
-   </wvobject>
-   <wvobject fp_name="/qbl_tb/eval_unit/U_bytelink/U_Decode8b10b/dispOut" type="logic">
-      <obj_property name="ElementShortName">dispOut</obj_property>
-      <obj_property name="ObjectShortName">dispOut</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider47">
       <obj_property name="label">BitslipStatemachine</obj_property>
@@ -107,27 +104,19 @@
       <obj_property name="ElementShortName">bitslip_o</obj_property>
       <obj_property name="ObjectShortName">bitslip_o</obj_property>
    </wvobject>
-   <wvobject type="divider" fp_name="divider60">
-      <obj_property name="label">read write</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject fp_name="/qbl_tb/xb" type="logic">
-      <obj_property name="ElementShortName">xb</obj_property>
-      <obj_property name="ObjectShortName">xb</obj_property>
-   </wvobject>
    <wvobject type="divider" fp_name="divider30">
       <obj_property name="label">RD</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject fp_name="/qbl_tb/eval_unit/rxData10b_intl" type="array">
-      <obj_property name="ElementShortName">rxData10b_intl[9:0]</obj_property>
-      <obj_property name="ObjectShortName">rxData10b_intl[9:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/qbl_tb/eval_unit/RD_s" type="array">
       <obj_property name="ElementShortName">RD_s[4:0]</obj_property>
       <obj_property name="ObjectShortName">RD_s[4:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/eval_unit/rxData10b_intl" type="array">
+      <obj_property name="ElementShortName">rxData10b_intl[9:0]</obj_property>
+      <obj_property name="ObjectShortName">rxData10b_intl[9:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/qbl_tb/eval_unit/count_ones" type="array">
       <obj_property name="ElementShortName">count_ones[4:0]</obj_property>
@@ -140,5 +129,13 @@
    <wvobject fp_name="/qbl_tb/eval_unit/U_bytelink/rxDispErr" type="logic">
       <obj_property name="ElementShortName">rxDispErr</obj_property>
       <obj_property name="ObjectShortName">rxDispErr</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider60">
+      <obj_property name="label">read write</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/qbl_tb/xb" type="logic">
+      <obj_property name="ElementShortName">xb</obj_property>
+      <obj_property name="ObjectShortName">xb</obj_property>
    </wvobject>
 </wave_config>
